@@ -27,8 +27,6 @@ for(int i=0;i<n;++i){
     cin>>arr[i];
 }
 check(arr,k);
-
     }
-
     return 0;
 }

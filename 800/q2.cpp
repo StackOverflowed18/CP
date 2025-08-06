@@ -28,8 +28,8 @@ n+=2;
     maxdist = max(maxdist,track[i] - track[i-1] );
  
    }
-   cout<<maxdist<<endl;
-}
+   
+}cout<<maxdist<<endl;
 }
 
     return 0;

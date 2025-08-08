@@ -82,8 +82,16 @@ int main() {
     cin >> T;
     while (T--) {
         // Solve each test case
-        
-        
+        ll n;
+        cin>>n;
+        vector<ll>a(n);
+        for(int i=0;i<n;++i){
+cin>>a[i];
+        }
+        if(a[0]==1)
+cout<<"yes"<<endl;
+else
+cout<<"no"<<endl;
     }
 
     return 0;

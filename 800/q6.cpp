@@ -1,26 +1,9 @@
-
-#include <algorithm>
-#include <bitset>
-#include <cassert>
-#include <climits>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <deque>
-#include <fstream>
 #include <iostream>
-#include <iterator>
-#include <list>
-#include <map>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <tuple>
 #include <vector>
+#include <string>
+#include <map>
+#include <utility>
+#include <algorithm>
 using namespace std;
 
 typedef long long ll;
@@ -45,6 +28,7 @@ typedef map<string, vs> msvs;
 #define F first
 #define S second
 #define endl '\n'
+#define REP(i,a,b) for (int i = a; i <= b; i++)
 
 #ifdef LOCAL
 #define debug(x) cerr << #x << " = "; _print(x); cerr << endl;
@@ -81,18 +65,34 @@ int main() {
     ll T;
     cin >> T;
     while (T--) {
-        // Solve each test case
-        ll n;
-        cin>>n;
-        vector<ll>a(n);
-        for(int i=0;i<n;++i){
-cin>>a[i];
+        int n;
+        cin >> n;
+        vi arr(n); // FIX: vector resized
+        REP(i,0,n-1) {
+            cin >> arr[i];
         }
-        if(a[0]==1)
-cout<<"yes"<<endl;
-else
-cout<<"no"<<endl;
-    }
 
+        map<int,int> freq;
+        REP(i,0,n-1) {
+            freq[arr[i]]++;
+        }
+
+        if(freq.size() > 2) {
+            cout << "no" << '\n';
+        }
+        else {
+            ll freq1 = freq.begin()->second;
+            ll freq2 = freq.rbegin()->second;
+            if(freq1 == freq2) {
+                cout << "yes" << '\n';
+            }
+            else if(n % 2 == 1 && abs(freq1 - freq2) == 1) {
+                cout << "yes" << '\n';
+            }
+            else {
+                cout << "no" << '\n';
+            }
+        }
+    }
     return 0;
 }

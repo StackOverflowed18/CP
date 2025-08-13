@@ -28,7 +28,7 @@ typedef map<string, vs> msvs;
 #define F first
 #define S second
 #define endl '\n'
-#define REP(i,a,b) for (int i = a; i <= b; i++)
+#define REP(i,a,b) for(int i=a;i<=b;++i)
 
 #ifdef LOCAL
 #define debug(x) cerr << #x << " = "; _print(x); cerr << endl;
@@ -58,42 +58,57 @@ void fast_io() {
     cin.tie(NULL);
     cout.tie(NULL);
 }
+bool check(string s , string x){//s->x
+    if(s.size() > x.size()){
+        return false;
+    }else{
 
+        REP(i,0,x.size()-s.size()+1){
+if(x.substr(i,s.size()) == s)
+return true;
+        }
+      
+    }  return false;
+}
 int main() {
     fast_io();
 
     ll T;
     cin >> T;
     while (T--) {
-        int n;
-        cin >> n;
-        vi arr(n); // FIX: vector resized
-        REP(i,0,n-1) {
-            cin >> arr[i];
-        }
+        // Solve each test case
+        ll n,m;
+        cin>>n>>m;
+        string s,x;
+        cin>>x>>s;
+string x1 =x +x ;
+string x2 =x1 +x1 ;
+string x3 =x2 +x2 ;
+string x4 =x3 +x3 ;
+string x5 =x4 +x4 ;
 
-        map<int,int> freq;
-        REP(i,0,n-1) {
-            freq[arr[i]]++;
-        }
+ll ans =-1;
+if(check(s,x)){
+    ans=0;
+}else if(check(s,x1)){
+    ans=1;
 
-        if(freq.size() > 2) {
-            cout << "no" << '\n';
-        }
-        else {
-            ll freq1 = freq.begin()->second;
-            ll freq2 = freq.rbegin()->second;
-            if(freq1 == freq2) {
-                cout << "yes" << '\n';
-            }
-            else if(n % 2 == 1 && abs(freq1 - freq2) == 1) {
-                cout << "yes" << '\n';
-            }
-            else {
-                cout << "no" << '\n';
-            }
-        }
+    }else if(check(s,x2)){
+    ans=2;
+
+    }else if(check(s,x3)){
+    ans=3;
+
+    }else if(check(s,x4)){
+    ans=4;
+
+    }else if(check(s,x5)){
+    ans=5;
     }
+        cout<<ans<<endl;
+    }
+
+    
+
     return 0;
 }
-
